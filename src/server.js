@@ -3,7 +3,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
 
-const router = require("./router/router");
+const { router } = require("./moduls");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");

@@ -12,5 +12,77 @@
     />
     <title>Document</title>
   </head>
-  <body></body>
+  <body class="bg-dark">
+    <header class="bg-white p-3">
+      <div class="container d-flex align-items-center justify-content-around">
+        <a
+          href="#"
+          class="d-flex flex-column align-items-center justify-content-center border-bottom-4 border-primary"
+        >
+          <img src="/images/home.svg" width="40" height="40" alt="" class="" />
+          <h3 class="">CredoHouse</h3>
+        </a>
+        <div class="">
+          <button class="btn btn-primary text-white px-3 mx-3">
+            Home Page
+          </button>
+          <button class="btn btn-primary text-white px-3 mx-3">Admin</button>
+        </div>
+        <a href="tel:998712420000" class="text-primary text-decoration-none"
+          >99 871 242-00-00</a
+        >
+        <select name="" id="" class="bg-primary text-white p-2 rounded">
+          <option value="uz">Uz</option>
+          <option value="en">En</option>
+          <option value="ru">Ru</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="mt-4">
+      <div
+        class="bg-transparent container d-flex flex-column align-items-center justify-content-center"
+      >
+        <h2 class="h2 text-white">Choose a house by filtering</h2>
+        <form
+          action=""
+          class="d-flex align-items-center justify-content-center w-75 p-5 bg-white mt-4"
+        >
+          <div class="d-flex flex-column align-items-center w-25 mx-1 mb-3">
+            <p class="">Building company:</p>
+            <select name="" id="" class="bg-primary p-2 text-white w-100">
+              <option value="no">Choose</option>
+              <% allCompanies.map(e=>{ %>
+              <option value="<%= e.company_id %>"><%= e.company_name %></option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="d-flex flex-column align-items-center w-25 mx-1 mb-3">
+            <p class="">Complex:</p>
+            <select name="" id="" class="bg-primary p-2 text-white w-100">
+              <option value="no">Choose</option>
+            </select>
+          </div>
+          <div class="d-flex flex-column align-items-center w-25 mx-1 mb-3">
+            <p class="">Number of rooms:</p>
+            <select name="" id="" class="bg-primary p-2 text-white w-100">
+              <option value="no">Choose</option>
+            </select>
+          </div>
+          <div class="d-flex flex-column align-items-center w-25 mx-1 mb-3">
+            <p class="">Mortgage duration:</p>
+            <select name="" id="" class="bg-primary p-2 text-white w-100">
+              <option value="no">Choose</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </main>
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
