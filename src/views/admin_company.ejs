@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/admin_company.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="d-flex w-100">
+      <%- include("./sidebar.ejs")%>
+      <div class="d-flex flex-column w-100 position-relative">
+        <div class="overlay"></div>
+        <div
+          class="container d-flex align-items-center justify-content-between w-100"
+        >
+          <button class="btn btn-primary control_btn">Add Company</button>
+          <button class="btn btn-primary control_btn">Delete Company</button>
+        </div>
+        <div class="container">
+          <form action="/admin_company" method="post" class="p-5">
+            <div class="w-100 d-flex mt-5 mb-5">
+              <div class="input-group mb-3 w-50 mx-3">
+                <input
+                  name="company_name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Company name"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+              <div class="input-group mb-3 w-50 mx-3">
+                <input
+                  name="company_img"
+                  type="text"
+                  class="form-control"
+                  placeholder="Company Img link"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+            <button class="btn btn-success w-100 mb-5">ADD COMPANY</button>
+          </form>
+          <form action="/admin_company" method="post" class="p-5 mt-5">
+            <select
+              name="company_id"
+              class="form-select mt-3"
+              aria-label="Default select example"
+            >
+              <% companies.map(e=>{ %>
+              <option value="<%= e.company_id %> ">
+                <%= e.company_name %>
+              </option>
+              <% }) %>
+            </select>
+            <button class="btn btn-success w-100 mt-5">DELETE COMPANY</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/admin_company.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

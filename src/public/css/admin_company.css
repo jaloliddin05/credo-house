@@ -1,0 +1,11 @@
+.overlay {
+  position: absolute;
+  top: 420px;
+  left: 20px;
+  width: 1225px;
+  height: 250px;
+  background-color: rgba(113, 111, 111, 0.678);
+  border: 2px solid white;
+  z-index: 5;
+  transition: 0.2s;
+}
