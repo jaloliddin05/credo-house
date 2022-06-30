@@ -70,6 +70,19 @@ const renderYears = (obj, place) => {
 };
 
 select_company.addEventListener("change", () => {
+  if (select_complex.value != "no") {
+    select_complex.innerHTML = null;
+  }
+  if (select_rooms.value != "no") {
+    div_1_2.classList.add("d-none");
+    select_rooms.innerHTML = null;
+  }
+  if (select_year.value != "no") {
+    div_2.classList.add("d-none");
+    div_3.classList.add("d-none");
+    select_year.innerHTML = null;
+  }
+
   let company_id = select_company.value.split("*")[0];
   if (company_id != "no") {
     fetch("http://localhost:9000/credoHouse", {
@@ -94,6 +107,16 @@ select_company.addEventListener("change", () => {
 });
 
 select_complex.addEventListener("change", () => {
+  if (select_rooms.value != "no") {
+    div_1_2.classList.add("d-none");
+    select_rooms.innerHTML = null;
+  }
+  if (select_year.value != "no") {
+    div_2.classList.add("d-none");
+    div_3.classList.add("d-none");
+    select_year.innerHTML = null;
+  }
+
   let complex_id = select_complex.value;
   if (complex_id != "no") {
     fetch("http://localhost:9000/credoHouse", {
@@ -111,6 +134,11 @@ select_complex.addEventListener("change", () => {
 });
 
 select_rooms.addEventListener("change", () => {
+  if (select_year.value != "no") {
+    div_2.classList.add("d-none");
+    div_3.classList.add("d-none");
+    select_year.innerHTML = null;
+  }
   let room_id = select_rooms.value;
   if (room_id != "no") {
     fetch("http://localhost:9000/credoHouse", {
@@ -131,6 +159,43 @@ select_rooms.addEventListener("change", () => {
         kv_metr_price.textContent = data.room.kv_metr_price + " meter square";
         total_area.textContent = data.room.total_area + " meter square";
         complex_adress.textContent = data.complex.complex_adress;
+      });
+  }
+});
+
+select_year.addEventListener("change", () => {
+  let bank_id = select_year.value.split("&")[0];
+  if (bank_id != "no") {
+    fetch("http://localhost:9000/credoHouse", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        bank_id,
+        bank_year: select_year.value.split("&")[1],
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        div_2.classList.remove("d-none");
+        bank_img.setAttribute("src", data.bank_img);
+        bank_name.textContent = data.bank_name;
+        bank_money.textContent = data.bank_money + " upto";
+        mortgage_duration.textContent = "Mortage duration: " + data.year;
+        starting_payment.textContent =
+          "Starting payment: " + data.starting_payment_procent + "%";
+        time.textContent = data.year + "year";
+        div_3.classList.remove("d-none");
+        house_price.textContent = "House price: " + data.house_price;
+        starting_payments.textContent =
+          "Starting payment: " + data.starting_payment;
+        monthly_payment.textContent =
+          "Monthly payment: " + data.monthly_payment;
+        bank_service.textContent = "Bank service: " + data.service;
+        payment_duration.textContent =
+          "Payment duration: " + data.year + " year";
       });
   }
 });
