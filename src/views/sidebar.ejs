@@ -1,0 +1,218 @@
+<div class="navigation">
+  <ul>
+    <li class="lists">
+      <form action="/credoHouse" method="get">
+        <button type="submit">
+          <span class="icon">
+            <ion-icon name="home-outline"></ion-icon>
+          </span>
+          <span class="title">CredoHouse</span>
+        </button>
+      </form>
+    </li>
+    <li class="lists">
+      <form action="/credoHouse" method="post">
+        <input type="text" class="none" name="logout" value="logout" />
+        <button type="submit">
+          <span class="icon">
+            <ion-icon name="podium"></ion-icon>
+          </span>
+          <span class="title">Statistics</span>
+        </button>
+      </form>
+    </li>
+    <li class="lists">
+      <form action="/credoHouse" method="post">
+        <input type="text" class="none" name="logout" value="logout" />
+        <button type="submit">
+          <span class="icon">
+            <ion-icon name="logo-buffer"></ion-icon>
+          </span>
+          <span class="title">Company</span>
+        </button>
+      </form>
+    </li>
+    <li class="lists">
+      <form action="/credoHouse" method="post">
+        <input type="text" class="none" name="logout" value="logout" />
+        <button type="submit">
+          <span class="icon">
+            <ion-icon name="color-filter"></ion-icon>
+          </span>
+          <span class="title">Complex</span>
+        </button>
+      </form>
+    </li>
+    <li class="lists">
+      <form action="/credoHouse" method="post">
+        <input type="text" class="none" name="logout" value="logout" />
+        <button type="submit">
+          <span class="icon">
+            <ion-icon name="logo-codepen"></ion-icon>
+          </span>
+          <span class="title">Room</span>
+        </button>
+      </form>
+    </li>
+    <li class="lists">
+      <form action="/credoHouse" method="post">
+        <input type="text" class="none" name="logout" value="logout" />
+        <button type="submit">
+          <span class="icon">
+            <ion-icon name="logo-usd"></ion-icon>
+          </span>
+          <span class="title">Bank</span>
+        </button>
+      </form>
+    </li>
+    <li class="lists">
+      <form action="/credoHouse" method="post">
+        <input type="text" class="none" name="logout" value="logout" />
+        <button type="submit">
+          <span class="icon">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </span>
+          <span class="title">Sign Out</span>
+        </button>
+      </form>
+    </li>
+  </ul>
+</div>
+
+<script
+  type="module"
+  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+></script>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  body {
+    background-color: #f4f1de;
+  }
+
+  .navigation {
+    position: relative;
+    min-height: 100vh;
+    width: 300px;
+    background-color: #3d405b;
+    overflow-x: hidden;
+    transition: width 0.5s;
+    border-radius: 20px;
+    box-shadow: 15px 20px 0px rgb(129, 178, 154),
+      -15px -20px 0px rgb(255, 255, 255);
+  }
+  ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    padding-top: 40px;
+  }
+
+  li {
+    position: relative;
+    list-style: none;
+    width: 90%;
+    padding-left: 30px;
+  }
+  li::after {
+    content: "";
+    width: 30%;
+    height: 90%;
+    background: #e07a5f;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    border-radius: 0 50px 50px 0;
+    transform: translateY(-10%) scaleX(0);
+    transition: all 0.2s;
+    transform-origin: left;
+    opacity: 0;
+  }
+  li.active::after {
+    transform: translateY(-10%) scaleX(1);
+    opacity: 1;
+  }
+  a {
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    width: 100%;
+    color: #f2cc8f;
+  }
+  button {
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    width: 100%;
+    color: #f2cc8f;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .icon {
+    margin-left: 10px;
+    position: relative;
+    display: block;
+    height: 60px;
+    line-height: 65px;
+    text-align: center;
+  }
+  ion-icon {
+    position: relative;
+    font-size: 1.5em;
+    z-index: 1;
+    font-weight: 500;
+  }
+  .title {
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .none {
+    display: none;
+  }
+</style>
+
+<script>
+  const list = document.querySelectorAll(".lists");
+  function activeLink() {
+    list.forEach((item) => item.classList.remove("active"));
+    this.classList.add("active");
+  }
+
+  list.forEach((item) => item.addEventListener("click", activeLink));
+
+  function active() {
+    if (window.location.href == "http://localhost:9000/admin") {
+      list[1].classList.add("active");
+    } else if (window.location.href == "http://localhost:9000/admin_company") {
+      list[2].classList.add("active");
+    } else if (window.location.href == "http://localhost:9000/admin_complex") {
+      list[3].classList.add("active");
+    } else if (window.location.href == "http://localhost:9000/admin_room") {
+      list[4].classList.add("active");
+    } else if (window.location.href == "http://localhost:9000/admin_bank") {
+      list[5].classList.add("active");
+    }
+  }
+  active();
+</script>

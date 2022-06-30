@@ -6,7 +6,18 @@ module.exports = {
     res.render("home", { allCompanies });
   },
   POST: async (req, res) => {
-    const { company_id, complex_id, room_id, bank_id, bank_year } = req.body;
+    const {
+      company_id,
+      complex_id,
+      room_id,
+      bank_id,
+      bank_year,
+      logout,
+      company_id_order,
+      complex_id_order,
+      room_id_order,
+      bank_id_order,
+    } = req.body;
 
     if (company_id) {
       const complexes = await credo.getComplexesOFCompany(company_id);
@@ -43,6 +54,18 @@ module.exports = {
       bank.service = "2.5 million";
       bank.house_price = payment.house_price;
       res.send(bank);
+    } else if (logout) {
+      res.clearCookie("access_token");
+      res.redirect("/credoHouse");
+    } else if (company_id_order) {
+      const [statistic] = await credo.addToStatistic(
+        company_id_order,
+        complex_id_order,
+        room_id_order,
+        bank_id_order
+      );
+
+      res.send("ok");
     }
   },
 };

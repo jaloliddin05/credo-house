@@ -33,6 +33,14 @@ credit_year INT[] not null
 );
 
 
+create table statistic(
+    statistic_id uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
+    company_id uuid not null,
+    complex_id uuid not null,
+    room_id uuid not null,
+    bank_id uuid not null
+);
+
 
 INSERT INTO companies(company_name) values
 ('Murad buildings'),

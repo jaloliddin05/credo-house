@@ -25,6 +25,7 @@ const monthly_payment = document.querySelector(".monthly_payment");
 const bank_service = document.querySelector(".bank_service");
 const payment_duration = document.querySelector(".payment_duration");
 const box = document.querySelector(".box");
+const credit_btn = document.querySelector(".credit_btn");
 
 //....................
 const renderComplexes = (arr, place) => {
@@ -198,4 +199,32 @@ select_year.addEventListener("change", () => {
           "Payment duration: " + data.year + " year";
       });
   }
+});
+
+credit_btn.addEventListener("click", () => {
+  fetch("http://localhost:9000/credoHouse", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      company_id_order: select_company.value.split("*")[0],
+      complex_id_order: select_complex.value,
+      room_id_order: select_rooms.value,
+      bank_id_order: select_year.value.split("&")[0],
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("ok");
+    });
+
+  div_1.classList.add("d-none");
+  div_1_2.classList.add("d-none");
+  div_3.classList.add("d-none");
+  div_2.classList.add("d-none");
+  select_complex.innerHTML = null;
+  select_rooms.innerHTML = null;
+  select_year.innerHTML = null;
+  box.classList.add("d-none");
 });
