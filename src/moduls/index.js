@@ -5,6 +5,7 @@ const admin = require("./admin/admin");
 const login = require("./login/LoginController");
 const verifyToken = require("../middlwares/verifyToken");
 const admin_company = require("./admin_company/admin_company");
+const admin_complex = require("./admin_complex/admin_complex");
 
 router
   .get("/credoHouse", credo.GET)
@@ -14,7 +15,8 @@ router
   .post("/login", login.POST)
   .post("/admin", admin.POST)
   .get("/admin_company", admin_company.GET)
-  .post("/admin_company", admin_company.POST);
+  .post("/admin_company", admin_company.POST)
+  .get("/admin_complex", admin_complex.GET);
 
 module.exports = {
   router,

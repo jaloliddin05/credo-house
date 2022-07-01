@@ -12,6 +12,7 @@ module.exports = {
     if (company_name) {
       const newCompany = await company.addCompany(company_name, company_img);
     } else if (company_id) {
+      const deletedCompany = await company.deleteCompany(company_id);
     }
 
     res.redirect("/admin_company");
