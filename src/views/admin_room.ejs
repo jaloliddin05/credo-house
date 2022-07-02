@@ -17,12 +17,12 @@
     <div class="d-flex w-100">
       <%- include("./sidebar.ejs")%>
       <div class="d-flex flex-column w-100 position-relative">
-        <div class="overlay"></div>
+        <div class="overlay w-100"></div>
         <div
           class="container d-flex align-items-center justify-content-between w-100"
         >
-          <button class="btn btn-primary control_btn">Add Company</button>
-          <button class="btn btn-primary control_btn">Delete Company</button>
+          <button class="btn btn-primary control_btn">Add Apartment</button>
+          <button class="btn btn-primary control_btn">Delete Apartment</button>
         </div>
         <div class="container">
           <form action="/admin_room" method="post" class="p-5">
@@ -31,10 +31,11 @@
                 <input
                   name="room_count"
                   type="text"
-                  class="form-control"
+                  class="form-control count_input"
                   placeholder="rooms number"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
+                  required
                 />
               </div>
               <div class="input-group mb-3 w-50 mx-3">
@@ -45,6 +46,7 @@
                   placeholder="total area"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
+                  required
                 />
               </div>
               <div class="input-group mb-3 w-50 mx-3">
@@ -55,12 +57,33 @@
                   placeholder="kv metr price"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
+                  required
                 />
               </div>
+              <div class="mb-3 mx-3 w-50">
+                <select
+                  name="complex_id_add"
+                  class="form-select select_complex_add"
+                  aria-label="Default select example"
+                  required
+                >
+                  <% complex.map(e=>{ %>
+                  <option value="<%= e.complex_id %> ">
+                    <%= e.complex_name %>
+                  </option>
+                  <% }) %>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-success w-100 mb-5">ADD Apartment</button>
+          </form>
+          <form class="p-5 mt-5">
+            <div class="d-flex align-items-center">
               <select
-                name="complex_id"
-                class="form-select mt-3"
+                name="complex_id_del"
+                class="form-select mt-3 select_complex"
                 aria-label="Default select example"
+                required
               >
                 <% complex.map(e=>{ %>
                 <option value="<%= e.complex_id %> ">
@@ -68,25 +91,18 @@
                 </option>
                 <% }) %>
               </select>
+              <select
+                name="room_id"
+                class="form-select select_room mt-3"
+                aria-label="Default select example"
+                required
+              >
+                <option value="no">Choose</option>
+              </select>
             </div>
-            <button class="btn btn-success w-100 mb-5">ADD COMPLEX</button>
-          </form>
-          <form action="/admin_company" method="post" class="p-5 mt-5">
-            <select
-              name="complex_id"
-              class="form-select mt-3 select_complex"
-              aria-label="Default select example"
-            >
-              <% complex.map(e=>{ %>
-              <option value="<%= e.complex_id %> ">
-                <%= e.complex_name %>
-              </option>
-              <% }) %>
-            </select>
-            <select name="" id="" class="select_rooms">
-              <option value="no">Choose</option>
-            </select>
-            <button class="btn btn-success w-100 mt-5">DELETE COMPLEX</button>
+            <button class="btn btn-success w-100 mt-5 btn_delete">
+              DELETE Apartment
+            </button>
           </form>
         </div>
       </div>

@@ -32,7 +32,6 @@
     </li>
     <li class="lists">
       <form action="/admin_complex" method="get">
-        <input type="text" class="none" name="logout" value="logout" />
         <button type="submit">
           <span class="icon">
             <ion-icon name="color-filter"></ion-icon>
@@ -42,8 +41,7 @@
       </form>
     </li>
     <li class="lists">
-      <form action="/credoHouse" method="post">
-        <input type="text" class="none" name="logout" value="logout" />
+      <form action="/admin_room" method="get">
         <button type="submit">
           <span class="icon">
             <ion-icon name="logo-codepen"></ion-icon>
@@ -53,8 +51,7 @@
       </form>
     </li>
     <li class="lists">
-      <form action="/credoHouse" method="post">
-        <input type="text" class="none" name="logout" value="logout" />
+      <form action="/admin_bank" method="get">
         <button type="submit">
           <span class="icon">
             <ion-icon name="logo-usd"></ion-icon>
@@ -200,14 +197,24 @@
   list.forEach((item) => item.addEventListener("click", activeLink));
 
   function active() {
-    if (window.location.href == "http://localhost:9000/admin") {
+    if (window.location.href == "http://localhost:9000/admin?") {
       list[1].classList.add("active");
+    } else if (window.location.href == "http://localhost:9000/admin") {
+      list[1].classList.add("active");
+    } else if (window.location.href == "http://localhost:9000/admin_company?") {
+      list[2].classList.add("active");
     } else if (window.location.href == "http://localhost:9000/admin_company") {
       list[2].classList.add("active");
+    } else if (window.location.href == "http://localhost:9000/admin_complex?") {
+      list[3].classList.add("active");
     } else if (window.location.href == "http://localhost:9000/admin_complex") {
       list[3].classList.add("active");
     } else if (window.location.href == "http://localhost:9000/admin_room") {
       list[4].classList.add("active");
+    } else if (window.location.href == "http://localhost:9000/admin_room?") {
+      list[4].classList.add("active");
+    } else if (window.location.href == "http://localhost:9000/admin_bank?") {
+      list[5].classList.add("active");
     } else if (window.location.href == "http://localhost:9000/admin_bank") {
       list[5].classList.add("active");
     }

@@ -17,7 +17,7 @@
     <div class="d-flex w-100">
       <%- include("./sidebar.ejs")%>
       <div class="d-flex flex-column w-100 position-relative">
-        <div class="overlay"></div>
+        <div class="overlay w-100"></div>
         <div
           class="container d-flex align-items-center justify-content-between w-100"
         >
@@ -35,6 +35,7 @@
                   placeholder="Company name"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
+                  required
                 />
               </div>
               <div class="input-group mb-3 w-50 mx-3">
@@ -45,6 +46,7 @@
                   placeholder="Company Img link"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
+                  required
                 />
               </div>
             </div>
@@ -55,6 +57,7 @@
               name="company_id"
               class="form-select mt-3"
               aria-label="Default select example"
+              required
             >
               <% companies.map(e=>{ %>
               <option value="<%= e.company_id %> ">

@@ -90,7 +90,7 @@
           labels: data.complex_name,
           datasets: [
             {
-              label: "Population (millions)",
+              label: "Number of choices",
               backgroundColor: [
                 "#3cba9f",
                 "#8e5ea2",
@@ -163,7 +163,7 @@
           labels: data.room_count,
           datasets: [
             {
-              label: "Population (millions)",
+              label: "Number of choices",
               backgroundColor: [
                 "#3cba9f",
                 "#8e5ea2",
@@ -223,7 +223,7 @@
         options: {
           title: {
             display: true,
-            text: "Predicted world population (millions) in 2050",
+            text: "Comonly boughted room counts",
           },
         },
       });
@@ -295,7 +295,7 @@
           legend: { display: false },
           title: {
             display: true,
-            text: "Predicted world population (millions) in 2050",
+            text: "The most lending banks",
           },
         },
       });

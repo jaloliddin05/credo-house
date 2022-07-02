@@ -43,12 +43,12 @@ create table statistic(
 
 
 INSERT INTO companies(company_name) values
-('Murad buildings'),
-('Golden House'),
-('Bizning Uylar'),
-('Olmazor City'),
-('Tashkent City'),
-('Akay City');
+('Murad buildings','https://www.mbc.uz/includes/images/new_layout/logo.svg'),
+('Golden House','https://logobank.uz:8005/media/logos_png/GOLDEN_HOUSE_logo_png-01.png'),
+('Bizning Uylar','https://logobank.uz:8005/media/logos_png/Bizning_Uylar-01.png'),
+('Grand Capital','https://www.goldenpages.uz/i/Companies/88872_1.jpg'),
+('NRG Uzbekistan','https://www.gazeta.uz/media/img/2020/02/J63Hfj15826103071468_l.jpg'),
+('Premier House','https://yangiuylar.uz/wp-content/uploads/2020/09/premier_house_logo.jpg');
 
 --Company Images updated
 
@@ -138,3 +138,21 @@ INSERT INTO banks(bank_name,starting_payment_procent,bank_img,bank_money,credit_
 ('Hamkor bank',20,'https://bank.uz/upload/iblock/9c8/9c8fb2ccf2b5cf0e59d78c6915ba0311.png',450000000,ARRAY[5,10,15]),
 ('Aloqa bank',19,'https://old.aloqabank.uz/files////aloqabank20167.png',1200000000,ARRAY[10,15,20,25]),
 ('Xalq bank',20,'https://bank.uz/upload/iblock/43f/43f293773967dfc7bab91e8751f12d7f.png',1600000000,ARRAY[10,15,20,25]);
+
+
+
+CREATE OR REPLACE PROCEDURE add_room(room_c int,total_a decimal,kv_metr_p numeric, complex_i uuid)
+LANGUAGE plpgsql
+AS
+$$
+BEGIN
+    IF
+    ( select EXISTS  (select * from complexes c inner join rooms r on c.complex_id = r.complex_id where r.room_count = room_c and c.complex_id = complex_i )) = false
+    THEN
+    INSERT INTO rooms
+        (room_count, total_area, kv_metr_price,complex_id)
+    values
+        (room_c, total_a, kv_metr_p,complex_i);
+END IF;
+END
+$$;

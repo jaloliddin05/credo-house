@@ -9,7 +9,7 @@ const addCompanyQuery = `insert into companies(company_name,company_img) values(
 const addCompany = (name, img) => fetchData(addCompanyQuery, name, img);
 
 const deleteCompanyQuery = `delete from companies where company_id = $1`;
-const deleteCompany = (id) => fetchData(deleteCompanyQuery, id);
+const deleteCompany = (id) => fetchData(deleteCompanyQuery, id.trim());
 
 module.exports = {
   getAllCompanies,
